@@ -7,7 +7,7 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('/login', () => {
-  it('should return a token if credentials are correct', done => {
+  it('should return a token if credentials are correct', (done) => {
     const credentials = {
       username: 'admin',
       password: 'admin',
@@ -25,8 +25,8 @@ describe('/login', () => {
         done();
       });
   });
-  it('should not return a token if credentials are incorrect', done => {
-    let credentials = {
+  it('should return HTTP 401 if credentials are incorrect', (done) => {
+    const credentials = {
       username: 'admin',
       password: 'wrongPassword',
     };

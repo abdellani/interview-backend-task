@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import chai, { expect } from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { describe, it, before } from 'mocha';
 import app from '../src/index';
@@ -9,11 +9,15 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('/jsonpatch', () => {
-  var token;
-  var doc, patch, patchedDoc;
+  let token;
+  let invalidToken;
+  let doc;
+  let patch;
+  let patchedDoc;
 
   before(() => {
     token = generateJwtToken({ payload: { id: 1 } });
+    invalidToken = generateJwtToken({ payload: { id: -1 } });
     doc = {
       baz: 'qux',
       foo: 'bar',
@@ -25,17 +29,31 @@ describe('/jsonpatch', () => {
       foo: 'bar',
     };
   });
-  it('should return a HTTP 401 if the token JWT is not set ', done => {
+
+  it('should return a HTTP 401 if the JWT token is not set ', (done) => {
     chai
       .request(app)
       .post('/jsonpatch')
-      .send(doc)
+      .send({ doc, patch })
       .end((err, res) => {
         res.should.have.status(401);
         done();
       });
   });
-  it('should return a patch doc if the JWT token is set ', done => {
+
+  it('should return a HTTP 401 if the JWT token is invalid', (done) => {
+    chai
+      .request(app)
+      .post('/jsonpatch')
+      .set('Authorization', `Bearer ${invalidToken}`)
+      .send({ doc, patch })
+      .end((err, res) => {
+        res.should.have.status(401);
+        done();
+      });
+  });
+
+  it('should return a patch doc if the JWT token is set ', (done) => {
     chai
       .request(app)
       .post('/jsonpatch')
@@ -48,7 +66,8 @@ describe('/jsonpatch', () => {
         done();
       });
   });
-  it('should return HTTP 400 if invalid payload is sent',done=>{
+
+  it('should return HTTP 400 if invalid payload is sent', (done) => {
     chai
       .request(app)
       .post('/jsonpatch')
@@ -59,6 +78,5 @@ describe('/jsonpatch', () => {
         res.should.be.json;
         done();
       });
-
-  })
+  });
 });
