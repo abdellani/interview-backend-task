@@ -1,11 +1,8 @@
 import Express, { json, Router } from 'express';
-import dotenv from 'dotenv';
 import morgan from 'morgan';
 import config from 'config';
 import { jwtTokensHandler, errorsHandler } from './middlewares';
 import { login, thumbnails, jsonpatch } from './routes';
-
-dotenv.config();
 
 const protectedRoutes = Router();
 protectedRoutes.use(jwtTokensHandler);

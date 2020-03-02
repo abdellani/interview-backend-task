@@ -1,0 +1,6 @@
+{
+  "PORT": "3000",
+  "JWT_LIFE_TIME": "24h",
+  "JWT_SECRET": "jurnzTtkLHI3ZuE2UaKvVWvqJ6rRb6XtvK9C/l+LQvMWh9wW0SlDK5kHN3sAitmE",
+  "IMAGE_DIR": "/usr/src/app/public/thumbnails"
+}

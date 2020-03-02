@@ -1,0 +1,9 @@
+{
+  "PORT": "3000", //Listening port
+  "JWT_LIFE_TIME": "24h", // Life time of jwt token
+  "JWT_SECRET": "SuperSecretKey", // Key used to encrypt the JWT tokens
+  "IMAGE_DIR": "PATH", // Absolut path where the files will be saved 
+  // The two next parameters are only needed for test.json 
+  "IMAGE_SERVER_PORT": "8080",
+  "HASH_RESIZE_IMAGE": "7a700bc715eda72d192b1c934547424e8ab69815026f24ead81a27122cf042f511df22b840c0e5438db0cb60d03e35d14d9289cd822ce0646068574438ec5fe0"
+}
