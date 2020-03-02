@@ -9,12 +9,12 @@ const jwtTokensHandler = (req, res, next) => {
   if (!authorization) {
     return res
       .status(401)
-      .json({ status: 401, message: 'Authrization header is required!' });
+      .json({ status: 401, message: 'Authorization header is required!' });
   }
   if (!isAutherizationHeaderPatternValid(authorization)) {
     return res
       .status(401)
-      .json({ status: 401, message: 'Invalid Authrization header payload!' });
+      .json({ status: 401, message: 'Invalid Authorization header payload!' });
   }
   const token = authorization.split(' ')[1];
   const decrypted = decryptJwtToken({ token });
