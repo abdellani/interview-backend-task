@@ -3,7 +3,6 @@ import { describe, beforeEach, it } from 'mocha';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import Jimp from 'jimp/es';
-import { throws } from 'assert';
 import { postHandler } from './thumbnails';
 
 describe('thumbnails route handler', () => {
