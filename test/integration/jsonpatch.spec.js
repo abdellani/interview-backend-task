@@ -2,8 +2,8 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { describe, it, before } from 'mocha';
-import app from '../src/index';
-import { generateJwtToken } from '../src/utilities';
+import app from '../../src/index';
+import { generateJwtToken } from '../../src/utilities';
 
 chai.should();
 chai.use(chaiHttp);

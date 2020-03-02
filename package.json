@@ -8,9 +8,10 @@
     "start": "node dist",
     "predev": "npm run clean && npm run linter",
     "dev": "webpack --watch",
-    "pretest": "npm run linter",
-    "test": "export NODE_ENV='test' && mocha test  --require @babel/register",
-    "posttest": "rimraf tmp/ ",
+    "test":"npm run test:integration",
+    "pretest:integration": "npm run linter",
+    "test:integration": "export NODE_ENV='test' && mocha test/integration  --require @babel/register",
+    "posttest:integration": "rimraf tmp/ ",
     "clean": "rimraf dist/",
     "linter:src": "eslint src/ --fix || exit 0",
     "linter": "eslint src/ test/ --fix || exit 0"

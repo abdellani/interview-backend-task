@@ -6,9 +6,9 @@ import chaiHttp from 'chai-http';
 import config from 'config';
 import hasha from 'hasha';
 import Path from 'path';
-import imageServer from './mock/imagesServer';
-import { generateJwtToken } from '../src/utilities';
-import app from '../src/index';
+import imageServer from '../mockServer/imagesServer';
+import { generateJwtToken } from '../../src/utilities';
+import app from '../../src/index';
 
 chai.should();
 chai.use(chaiHttp);
