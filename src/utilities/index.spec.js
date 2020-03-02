@@ -1,4 +1,4 @@
-import { describe, it,before } from 'mocha';
+import { describe, it, before } from 'mocha';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import JWT from 'jsonwebtoken';
@@ -32,18 +32,15 @@ describe('isAutherizationHeaderPatternValid', () => {
   let validPayload;
 
   before(() => {
-    payloadWithoutBearer =
-      'test eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
-      'eyJpZCI6MSwiaWF0IjoxNTgzMTA4NzcxLCJleHAiOjE1ODMxOTUxNzF9.' +
-      '63n8zhAKK9c8rBaColFzTRbOIVZlGB9-CsEF320yB_U';
-    payloadWithInvalidChars =
-      'Bearer àààà)====+++==-*/-*/*-/-*/+++###~~~~~.' +
-      'eyJpZCI6MSwiaWF0IjoxNTgzMTA4NzcxLCJleHAiOjE1ODMxOTUxNzF9.' +
-      '63n8zhAKK9c8rBaColFzTRbOIVZlGB9-CsEF320yB_U';
-    validPayload =
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
-      'eyJpZCI6MSwiaWF0IjoxNTgzMTA4NzcxLCJleHAiOjE1ODMxOTUxNzF9.' +
-      '63n8zhAKK9c8rBaColFzTRbOIVZlGB9-CsEF320yB_U';
+    payloadWithoutBearer = 'test eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.'
+      + 'eyJpZCI6MSwiaWF0IjoxNTgzMTA4NzcxLCJleHAiOjE1ODMxOTUxNzF9.'
+      + '63n8zhAKK9c8rBaColFzTRbOIVZlGB9-CsEF320yB_U';
+    payloadWithInvalidChars = 'Bearer àààà)====+++==-*/-*/*-/-*/+++###~~~~~.'
+      + 'eyJpZCI6MSwiaWF0IjoxNTgzMTA4NzcxLCJleHAiOjE1ODMxOTUxNzF9.'
+      + '63n8zhAKK9c8rBaColFzTRbOIVZlGB9-CsEF320yB_U';
+    validPayload = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.'
+      + 'eyJpZCI6MSwiaWF0IjoxNTgzMTA4NzcxLCJleHAiOjE1ODMxOTUxNzF9.'
+      + '63n8zhAKK9c8rBaColFzTRbOIVZlGB9-CsEF320yB_U';
   });
   it('should retrun true if the header payload is valid ', () => {
     expect(isAutherizationHeaderPatternValid(validPayload)).to.eql(true);
@@ -85,7 +82,7 @@ describe('decryptJwtToken', () => {
   });
 
   it('should return null if token expires', () => {
-    //As lifetime is 1h, the token should not work after 1h and 1m
+    // As lifetime is 1h, the token should not work after 1h and 1m
     clock.tick(3600 * 1000 + 60 * 1000);
     expect(decryptJwtToken({ token, secret })).to.eql(null);
   });

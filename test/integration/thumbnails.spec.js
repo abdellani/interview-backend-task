@@ -13,7 +13,7 @@ import app from '../../src/index';
 chai.should();
 chai.use(chaiHttp);
 
-describe('/thumbnails', () => {
+describe('POST /thumbnails', () => {
   let server;
   let invalidToken;
   let validToken;

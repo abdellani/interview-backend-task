@@ -9,7 +9,7 @@ import {
 } from '../utilities/Exceptions';
 
 const route = Router();
-route.post('/', (req, res) => {
+const postHandler = (req, res) => {
   const { url } = req.body;
   if (!url) {
     return res.status(400).json({ message: 'url is required !' });
@@ -44,6 +44,7 @@ route.post('/', (req, res) => {
         .status(500)
         .json({ message: 'A problem occured while downloading image' });
     });
-});
-
+};
+route.post('/', postHandler);
+export { postHandler };
 export default route;

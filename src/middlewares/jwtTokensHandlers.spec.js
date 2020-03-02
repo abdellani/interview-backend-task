@@ -1,4 +1,6 @@
-import { describe, it, before, beforeEach } from 'mocha';
+import {
+  describe, it, before, beforeEach,
+} from 'mocha';
 import sinon from 'sinon';
 import config from 'config';
 import { expect } from 'chai';

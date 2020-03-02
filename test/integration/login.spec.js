@@ -6,7 +6,7 @@ import app from '../../src/index';
 chai.should();
 chai.use(chaiHttp);
 
-describe('/login', () => {
+describe('POST /login', () => {
   it('should return a token if credentials are correct', (done) => {
     const credentials = {
       username: 'admin',

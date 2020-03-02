@@ -8,8 +8,9 @@
     "start": "node dist",
     "predev": "npm run clean && npm run linter",
     "dev": "webpack --watch",
-    "test":"npm run test:integration",
-    "pretest:integration": "npm run linter",
+    "pretest": "npm run linter",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:unit": "export NODE_ENV='test' && nyc --reporter=html --reporter=text mocha src/**/*.spec.js  --require @babel/register",
     "test:integration": "export NODE_ENV='test' && mocha test/integration  --require @babel/register",
     "posttest:integration": "rimraf tmp/ ",
     "clean": "rimraf dist/",
@@ -44,6 +45,8 @@
     "jsonpatch": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
+    "nyc": "^15.0.0",
+    "sinon": "^9.0.0",
     "uuid": "^7.0.1"
   }
 }

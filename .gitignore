@@ -3,3 +3,5 @@ node_modules
 dist
 public/thumbnails/
 config/
+.nyc_output
+coverage

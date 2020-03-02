@@ -2,8 +2,7 @@ import { Router } from 'express';
 import { checkCredentials, generateJwtToken } from '../utilities';
 
 const route = Router();
-
-route.post('/', (req, res) => {
+const postHandler = (req, res) => {
   const { username, password } = req.body;
   const result = checkCredentials(username, password);
 
@@ -19,5 +18,7 @@ route.post('/', (req, res) => {
       error: 'Invalid username/password',
     });
   }
-});
+};
+route.post('/', postHandler);
+export { postHandler };
 export default route;

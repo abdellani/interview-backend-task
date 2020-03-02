@@ -1,5 +1,11 @@
 {
+  "all":true,
   "exclude": [
-    "**/*.spec.js"
+    "**/*.spec.js",
+    "*.js",
+    "test",
+    "dist",
+    "coverage",
+    "**/index.js"
   ]
 }

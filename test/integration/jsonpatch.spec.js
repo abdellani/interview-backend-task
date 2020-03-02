@@ -8,7 +8,7 @@ import { generateJwtToken } from '../../src/utilities';
 chai.should();
 chai.use(chaiHttp);
 
-describe('/jsonpatch', () => {
+describe('POST /jsonpatch', () => {
   let token;
   let invalidToken;
   let doc;
