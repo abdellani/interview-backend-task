@@ -1,8 +1,8 @@
 # About the program
 
-This program is developer for the technical backend interview. It's a RESTFul application that provide three routes.
+This program is developed for a technical interview. It's a RESTFul application that provides three routes.
 
-1.  `POST /login` expect a username and a password, and returns a `JWT` token for future requests.
+1.  `POST /login` expects a username and a password, and returns a `JWT` token for future requests.
 2.  `POST /thumbnails` protected route that expects a json payload `{"url":"http://link"}`, and return the relative path to the resized image. Example of a response
 
 ```json
